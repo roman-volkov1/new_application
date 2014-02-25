@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<widget xmlns = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id = "com.phonegap.vse-moe"
+        version = "1.0.0">
+
+    <name>Vse Moe</name>
+
+    <description>
+        Vse Moe shop application
+    </description>
+
+    <author href="http://sevencollab.com/" email="info@sevencollab.com">
+        SEVEN®, PE
+    </author>
+
+    <gap:platform name="android" />
+    <gap:plugin name="org.apache.cordova.device" />
+    <gap:plugin name="org.apache.cordova.splashscreen" /> 
+
+    <preference name="android-minSdkVersion" value="7" />
+    <preference name="android-targetSdkVersion" value="7" />
+    <preference name="permissions" value="none"/>
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="UIWebViewBounce" value="false" />
+    <preference name="splashScreenDelay" value="30000" />
+
+
+    <!-- Customize your app and platform with the preference element. -->
+    <preference name="phonegap-version" value="3.1.0" />
+    <preference name="orientation" value="portrait" />
+
+    <!-- Define app icon for each platform. -->
+    <icon src="icon.png" />
+    <icon src="res/icon/android/icon-36-ldpi.png" gap:platform="android" gap:density="ldpi" />
+    <icon src="res/icon/android/icon-48-mdpi.png" gap:platform="android" gap:density="mdpi" />
+    <icon src="res/icon/android/icon-72-hdpi.png" gap:platform="android" gap:density="hdpi" />
+    <icon src="res/icon/android/icon-96-xhdpi.png" gap:platform="android" gap:density="xhdpi" />
+
+    <!-- Define app splash screen for each platform. -->
+    <gap:splash src="res/screen/android/screen-xhdpi-portrait.png"  gap:platform="android" gap:density="ldpi" />
+    <gap:splash src="res/screen/android/screen-xhdpi-portrait.png"  gap:platform="android" gap:density="mdpi" />
+    <gap:splash src="res/screen/android/screen-xhdpi-portrait.png"  gap:platform="android" gap:density="hdpi" />
+    <gap:splash src="res/screen/android/screen-xhdpi-portrait.png" gap:platform="android" gap:density="xhdpi" />
+
+    <access origin="*" browserOnly="true"/> <!-- allow local pages -->
+
+</widget>

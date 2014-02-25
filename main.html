@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FM</title>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">   
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" href="fonts/font.css">
+    <!-- Підключення jquerymobile -->
+    <link rel="stylesheet" href="css/jquerymobilemin.css" />
+    <script src="js/libs/jquery.js"></script>
+    <script src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8">
+    document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady() {
+        setTimeout(function() {
+            navigator.splashscreen.hide();
+        }, 1500);
+    }
+    </script>
+    <script>
+
+    $(document).on("mobileinit", function(){
+      $.mobile.pageContainer = $('#container');
+      $.mobile.defaultPageTransition = "none";
+      $.mobile.defaultDialogTransition = 'none';
+       $.mobile.transitionFallbacks='none';
+      $.mobile.allowCrossDomainPages = true;
+      $.mobile.phonegapNavigationEnabled = true;
+    });
+   
+    $(function() {
+      $.ajax({
+        type       : "GET",
+        url        : "http://ajax.googleapis.com/ajax/services/search/web",
+        crossDomain: true,
+        dataType   : 'json',
+        beforeSend : function(){},
+        complete   : function(){},
+        success    : function(){},
+        error      : function(){$(".internetFalue").css("display","block");}
+      });     
+    })
+  </script>
+    <script src="js/libs/jquery.mobile-1.3.2.min.js"></script>
+
+
+    <script src="js/main.js"></script>
+    <script src="js/wSelect.min.js"></script>
+    <script src="js/ajax/user.js"></script>
+    <script src="js/ajax/backet.js"></script>
+    <script src="js/ajax/catalog.js"></script>
+    <script src="js/ajax/search.js"></script>
+    <script src="js/ajax/messages.js"></script>
+    <script src="js/ajax/offers.js"></script>
+    <script src="js/ajax/product.js"></script>
+    <script src="js/ajax/info.js"></script>
+    <script src="js/libs/kendo.all.min.js"></script>
+    <script src="js/jquery.lazyload.min.js"></script>
+    <script src="js/libs/jquery.dotdotdot.min.js"></script>
+
+
+
+    <link rel="stylesheet" href="css/style-vk.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/libs/slider.js"></script>
+    <style>
+      .ui-body-b, .ui-overlay-b {
+          background: #4CBDD7;
+          color: #fff;
+          text-shadow: none;
+          font-weight: normal;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="thisPage" style="display: none;"></div>
+
+    <div class="load"><img src="images/ui/preload.gif" alt=""></div>
+
+    <ul class="menu2">
+      <li><a href="#about_company" class="lim1"></a></li>
+      <li><a href="#pay_page" class="lim2"></a></li>
+      <li><a href="#delivery_page" class="lim3"></a></li>
+      <li><a href="#personal_info" class="lim4"></a></li>
+      <li><a href="#offer" class="lim5"></a></li>
+    </ul>
+    <div id="token" class="hidden"></div>
+    <ul class="backet_hidden">
+    </ul>
+    <div class="offers_status"></div>
+    <div class="popup_bg"></div>
+    <div class="popwr popwrAddedToBacket">
+      <div class="popAddedToBacket">
+        <div class="left">
+          <img src="http://mobiserver.seven.ua/app-demo/main/checktb.png" alt="">
+        </div>
+        <div class="right">
+          <p></p>
+        </div>
+        <a href="#backet" class="toBack">Корзина</a>
+        <a href="javascript:void(0)" class="close">Продолжить</a>
+        <div class="clr"></div>
+          
+      </div>        
+    </div>
+    <div class="popwr popwrOfferCreate">
+      <div class="popOfferCreate">
+        <div class="left">
+          <img src="http://mobiserver.seven.ua/app-demo/main/checktb.png" alt="">
+        </div>
+        <div class="right">
+          <p></p>
+        </div>
+        <a href="#mainpage1" class="toBack">На Главную</a>
+        <a href="javascript:void(0)" class="close">Продолжить</a>
+        <div class="clr"></div>
+      </div>        
+    </div>
+    <div class="fullprice"  style="display: none;"></div>
+    <div class="internetFalue">
+      <div class="inner">
+        <img src="images/ui/logo.png" alt="">
+        <p>Подключение отсутствует.<br> Проверьте ваше соединение</p>
+        <a href="#" class="reloadapp">Повтор</a>
+      </div>
+    </div>
+    <div class="internetFalue2">
+      <div class="inner">
+        <img src="images/ui/logo.png" alt="">
+        <p>Подключение отсутствует.<br> Проверьте ваше соединение</p>
+      </div>
+    </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- HEADER -->
+    <div data-role="header" data-theme="b" data-tap-toggle="false" class="ui-header ui-bar-b slidedown" role="banner">
+      <h1 class="ui-title" role="heading" aria-level="1"></h1>
+      <a href="#" data-rel="back" data-role="none"></a>
+      <a href="#" data-role="none" class="gohome2"></a>
+      <div class="changer">
+        <a href="#" class="look2 active"></a>
+        <a href="#" class="look1"></a>
+      </div>
+    </div>
+    <!-- HEADER -->
+
+
+
+    <div data-role="page" class="mainpage" data-theme="b" id="mainpage1"> 
+
+      <script src="js/ajax/slider.js"></script>
+
+          <div class="swiper-container">
+            <div class="swiper-wrapper">
+              <div class='swiper-slide'>
+                <a href="#" rel='http://vsemoe.com.ua' class='slda'>
+                  <img src='images/slider/slide1.jpg'>
+                </a>
+              </div>
+
+              <div class='swiper-slide'>
+                <a href="#" rel='http://vsemoe.com.ua' class='slda'>
+                  <img src='images/slider/slide2.jpg'>
+                </a>
+              </div>
+
+              <div class='swiper-slide'>
+                <a href="#" rel='http://vsemoe.com.ua' class='slda'>
+                  <img src='images/slider/slide3.jpg'>
+                </a>
+              </div>
+
+              <div class='swiper-slide'>
+                <a href="#" rel='http://vsemoe.com.ua' class='slda'>
+                  <img src='images/slider/slide4.jpg'>
+                </a>
+              </div>
+
+              <div class='swiper-slide'>
+                <a href="#" rel='http://vsemoe.com.ua' class='slda'>
+                  <img src='images/slider/slide5.jpg'>
+                </a>
+              </div>                                          
+            </div>
+            <div class="pagination"></div>
+          </div>
+          <div class="menu-my">
+            <div class="item"><a  href="#search" class="img"><img src="images/main/ico2.png" alt=""><span>Поиск</span></a></div>
+            <div class="item"><a  href="#catalog_level1" class="img"><img src="images/main/ico1.png" alt=""><span>Каталог</span></a></div>
+            <div class="item"><a  href="#personal_info" class="img"><img src="images/main/ico3.png" alt=""><span>Профиль</span></a></div>
+            <div class="item"><a  href="#backet" class="img"><img src="images/main/ico4.png" alt=""><span>Корзина</span></a></div>
+            <div class="item"><a  href="#offer" class="img"><img src="images/main/ico5.png" alt=""><span>Мои заказы</span></a></div>
+            <div class="item"><a  href="#messageslist" class="img"><img src="images/main/ico6.png" alt=""><span>Сообщения</span></a></div>
+            <div class="item"><a  href="#delivery_page" class="img"><img src="images/main/ico7.png" alt=""><span>Доставка</span></a></div>
+            <div class="item"><a  href="#pay_page" class="img"><img src="images/main/ico8.png" alt=""><span>Оплата</span></a></div>
+            <div class="item"><a  href="#about_company" class="img"><img src="images/main/ico9.png" alt=""><span>О нас</span></a></div>
+          </div>
+      </div>
+
+
+      <div data-role="page" id="backet" data-theme="b">
+  		
+  		<div class="load" style="margin-top:-15px;">
+  		</div>
+	 
+
+      <div data-role="content"> 
+
+        <ul class="backet_ul">
+
+ 
+        </ul>
+        <p style="display:none;" class="all_price"><span class="name">Общая сумма: </span><span class="price"></span></p>
+        <div class="clr"></div>
+        <a href="#catalog_level1" class='gocatalog'>Добавить из каталога</a>
+        <a style="display:none;" href="#make_offer" class="get_all">Оформить заказ</a>
+      </div>
+    </div>
+    <div data-role="page" id="offer" data-theme="b">
+      <div data-role="content"> 
+        <ul class="offers_list"></ul>
+      </div>
+    </div>
+    <div data-role="page" id="view_offer" data-theme="b">
+      <div data-role="content"> 
+        <div class="id-offer" style="display: none;"></div>
+        <ul class="voffer_ul"></ul>
+        <p class="all_price"><span class="name">Общая сумма: </span><span class="price"></span></p>
+        <a href="#edit_offer" class="get_all offer_trigger" id="editofferbut">Редактировать заказ</a>
+        <a href="#" class="tomessages">К сообщениям</a>
+        <a href="#" class='deleteOffer'>Удалить заказ</a>
+      </div>
+    </div>
+    <div data-role="page" id="make_offer" data-theme="b">
+      <div data-role="content"> 
+        <form action="" id="createoffer">
+          <p class="ttlnm">Список товаров</p>
+          <ul class="makeofflist"> 
+          </ul>
+          <input type="hidden" name="cart[total_price]" id="o_full">
+          <input type="hidden" name="cart[id]" id="offer_id">
+          <p class="all_price"><span class="name">Общая сумма: </span><span class="price"></span><span class="clr"></span></p>
+          <p class="ttlnm">Контактное лицо</p>
+          <input id="o_person" type="text" name="cart[person]" data-role="none" placeholder="Имя Фамилия">
+          <p class="ttlnm">Контакты</p>
+          <input id="o_mob_phone" type="text" name="cart[telephone1]" data-role="none" placeholder="Мобильный телефон">  
+          <p class="ttlnm">Адрес доставки</p>
+          <p style="margin: 0 0 5px 0;">Город</p>
+          <input id="o_city" type="text" name="cart[city]" data-role="none" placeholder="Город">  
+          <p style="margin: 0 0 5px 0;">Улица</p>
+          <input id="o_street" type="text" name="cart[street]" data-role="none" placeholder="Улица">  
+          <p style="margin: 0 0 5px 0;">Дом</p>
+          <input id="o_building" type="text" name="cart[building]" data-role="none" placeholder="Дом"> 
+          <p style="margin: 0 0 5px 0;">Корпус</p>
+          <input id="o_corpus" type="text" data-role="none" placeholder="Корпус" name="cart[corpus]">
+          <p style="margin: 0 0 5px 0;">Подъезд</p>
+          <input id="o_porch" type="text" name="cart[porch]" data-role="none" placeholder="Подъезд">  
+          <p style="margin: 0 0 5px 0;">Квартира</p>
+          <input id="o_flat" type="text" name="cart[flat]" data-role="none" placeholder="Квартира">
+          <p style="margin: 0 0 5px 0;">Код домофона </p>
+          <input id="o_code_intercom" type="text" data-role="none" placeholder="Код домофона " id="buildingf" name="cart[code_intercom]">
+          <p style="margin: 0 0 5px 0;">Этаж</p>
+          <input id="o_floor" type="text" data-role="none" placeholder="Этаж" id="buildingf" name="cart[floor]">
+
+
+          <!-- <p class="ttlnm">Выбор упаковки</p> 
+          <div class="vubyppak-wrap">
+          <select name="cart[admin_box_id]" id="box_id_adm" class="vubyppak" data-role="none">
+
+          </select>
+          </div>
+          <p class="ttlnm">Комментарий курьеру</p>
+          <textarea data-role="none" name="cart[comment]" placeholder="Вручить этому получателю"></textarea>
+          <textarea data-role="none" name="cart[comment1]" placeholder="Укажите удобное для Вас время доставки"></textarea>
+          <div class="clr"></div> -->
+          <a href="javascript:void(0)" id="buttonoz" class="get_all" onclick="$(this).closest('form').submit();">Оформить заказ</a>
+        </form>
+      </div>  
+    </div>
+    <div data-role="page" id="catalog_level1" data-theme="b">
+      <div data-role="content" class="no-padding"> 
+        <ul class="list-nav">
+        </ul> 
+      </div>
+    </div>
+    <div data-role="page" id="catalog_level2" data-theme="b">
+      <div data-role="content" class="no-padding"> 
+        <div class="idcallvl2" style="display: none;"></div>
+        <ul class="list-nav bigger">
+        </ul> 
+      </div>
+    </div>
+    <div data-role="page" id="catalog_level3" data-theme="b">
+      <div data-role="content" class="no-padding"> 
+        <div class="idcallvl3" style="display: none;"></div>
+        <ul class="list-nav2">
+        </ul> 
+      </div>
+    </div>
+    <div data-role="page" id="about_company" class="infopage" data-theme="b">
+      <div data-role="content" class="cont"> 
+        <div class="clr">&nbsp;</div>
+      </div>
+    </div>
+    <div data-role="page" id="pay_page" class="infopage" data-theme="b">
+      <div data-role="content" class="cont"> 
+        
+      </div>
+    </div>
+    <div data-role="page" id="delivery_page" class="infopage" data-theme="b">
+      <div data-role="content" class="cont"> 
+        
+      </div>
+    </div>
+    <div data-role="page" id="search" data-theme="b">
+      <div data-role="content"> 
+        <div class="search_block">
+          <a href="javascript:void(0)" class="search_btn"></a>
+          <input type="text" id="dosearch" data-role="none" value="Что ищем?" class="in" data-role="none" onfocus="this.value = '';this.style.color = '#345263' " onblur="this.style.color = '#fff'; if (this.value == 'Что ищем?' || this.value == '') this.value='Что ищем?'">
+        </div>
+        <div class="founded_cnt" style="display: none;">Найдено: <span>10</span> товаров</div>
+        <ul class="products products_list_search list-nav2">
+
+        </ul>
+      </div>
+    </div>
+    <div data-role="page" id="messageslist" data-theme="b">
+      <div data-role="content"> 
+        <ul class="messages">
+        </ul>
+      </div>
+    </div>
+    <div data-role="page" id="messages" data-theme="b">
+      <div class="messid" style="display: none;"></div>
+      <div data-role="content"> 
+        <div class="mbox">
+        </div>
+        <form id="sendmessage" accept-charset="utf-8" method="get">
+          <input type="hidden" name="id">
+          <input type="text" data-role="none" name="message" value="Введите текст сообщения" data-role="none" onfocus="this.value = '';" onblur="if (this.value == 'Введите текст сообщения' || this.value == '') this.value='Введите текст сообщения'">
+          <a href="javascript:void(0)" class="send" onclick="$(this).closest('form').submit();">Отправить сообщение</a>
+        </form>
+        <a href="#" class="tooffers">К заказу</a>
+      </div>
+    </div>
+    <div data-role="page" id="product_detailed" data-theme="b">
+      <div data-role="content" id="full_cart_description"> 
+        <span class="hidden"><!--for product id - must be here --></span>
+        <div class="product-item"></div>
+      </div>
+    </div>
+    <div data-role="page" id="personal_info" data-theme="b">
+      <div data-role="content" class="content">
+      </div>
+    </div>
+    <div data-role="page" id="login_page" data-theme="b">
+      <div data-role="content" class="content"> 
+        <form action="" id="new_web_user" method="post">
+          <input type="text" data-role="none" value="Логин" name="web_user[username]" onfocus="this.value = '';" onblur="if (this.value == 'Логин' || this.value == '') this.value='Логин'">
+          <input type="text" data-role="none" value="Пароль" name="web_user[password]" onfocus="this.value='';this.type='password';" onblur="if(this.value==''){ this.type='text';this.value='Пароль';}">
+
+          <div class="forgot_pas"><a href="#forget_password" class="forgot_pass">Забыли пароль?</a></div>
+
+          <a href="javascript:void(0)" class="login_btn" onclick="$(this).closest('form').submit();">Войти</a>
+          <a href="#register_page" class="register_btn">Регистрация</a>
+        </form>
+      </div>
+    </div>
+    <div data-role="page" id="forget_password" data-theme="b">
+      <div data-role="content" class="content"> 
+        <form action="" id="forget" method="get">
+          <span class="forpassword">
+            Ваш E-mail
+          </span>
+          <hr>
+          <p>Введите Ваш электронный адрес и Вы получите новый пароль по электронной почте</p>
+          <input data-role="none" type="email" value="E-mail" name="email" onfocus="this.value = '';" onblur="if (this.value == 'E-mail' || this.value == '') this.value='E-mail'">
+          <a class="forgot_pass" href="javascript:void(0)" onclick="$(this).closest('form').submit();">Отправить</a>
+        </form>
+      </div>
+    </div>
+    <div data-role="page" id="register_page" data-theme="b">
+     
+
+ 
+      <div data-role="content" class="content"> 
+        <form action="" id="web_user" method="POST">
+          <fieldset>
+            <div class="legenda">Личные данные</div>
+            <input type="text" data-role="none" value="Имя" id="namef" name="retail_customer[name]" onfocus="this.value = '';" onblur="if (this.value == 'Имя' || this.value == '') this.value='Имя'">
+            <input type="text" data-role="none" value="Фамилия" id="lastnamef" name="retail_customer[lastname]" onfocus="this.value = '';" onblur="if (this.value == 'Фамилия' || this.value == '') this.value='Фамилия'">
+            <input data-role="none" type="email" value="Е-mail" id="emailf" name="web_user[email]" onfocus="this.value = '';" onblur="if (this.value == 'Е-mail' || this.value == '') this.value='Е-mail'">
+            <input type="hidden" value="2" name="web_user[user_type]">
+          </fieldset>
+
+          <fieldset>
+            <div class="legenda">Контакты</div>
+            <input type="text" data-role="none" value="Мобильный телефон" id="telephonef" name="retail_customer[telephone]" onfocus="this.value = '';" onblur="if (this.value == 'Мобильный телефон' || this.value == '') this.value='Мобильный телефон'">
+            <input type="text" data-role="none" value="Мобильный телефон #2" id="telephonef2" name="retail_customer[mob_phone]" onfocus="this.value = '';" onblur="if (this.value == 'Мобильный телефон #2' || this.value == '') this.value='Мобильный телефон #2'">
+            <input type="text" data-role="none" value="Домашний телефон" id="hometelephonef" name="retail_customer[home_phone]" onfocus="this.value = '';" onblur="if (this.value == 'Домашний телефон' || this.value == '') this.value='Домашний телефон'">
+          </fieldset>
+
+          <fieldset>
+            <div class="legenda">Адрес доставки</div>
+            <input type="text" data-role="none" value="Город" id="cityf" name="retail_customer[city]" onfocus="this.value = '';" onblur="if (this.value == 'Город' || this.value == '') this.value='Город'">
+            <input type="text" data-role="none" value="Улица" id="streetf" name="retail_customer[street]" onfocus="this.value = '';" onblur="if (this.value == 'Улица' || this.value == '') this.value='Улица'">
+            <input type="text" data-role="none" value="Дом" id="buildingf" name="retail_customer[building]" onfocus="this.value = '';" onblur="if (this.value == 'Дом' || this.value == '') this.value='Дом'">
+            <input type="text" data-role="none" value="Корпус" name="retail_customer[corpus]" onfocus="this.value = '';" onblur="if (this.value == 'Корпус' || this.value == '') this.value='Корпус'">
+            <input type="text" data-role="none" value="Подъезд" name="retail_customer[porch]" onfocus="this.value = '';" onblur="if (this.value == 'Подъезд' || this.value == '') this.value='Подъезд'">
+            <input type="text" data-role="none" value="Код домофона" id="buildingf" name="retail_customer[code_intercom]" onfocus="this.value = '';" onblur="if (this.value == 'Код домофона || this.value == '') this.value='Код домофона'">
+            <input type="text" data-role="none" value="Этаж" id="buildingf" name="retail_customer[floor]" onfocus="this.value = '';" onblur="if (this.value == 'Этаж' || this.value == '') this.value='Этаж'">
+            <input type="text" data-role="none" value="Квартира" name="retail_customer[flat]" onfocus="this.value = '';" onblur="if (this.value == 'Квартира' || this.value == '') this.value='Квартира'">
+          </fieldset>
+
+          <fieldset>
+            <div class="legenda">Аккаунт</div>
+            <input type="text" data-role="none" value="Логин" id="usernamef" name="web_user[username]" onfocus="this.value = '';" onblur="if (this.value == 'Логин' || this.value == '') this.value='Логин'">
+            <input type="text" data-role="none" value="Пароль" id="passwordf" name="web_user[password]" onfocus="this.value='';this.type='password';" onblur="if(this.value==''){ this.type='text';this.value='Пароль';}">
+            <input type="text" data-role="none" value="Подтверждение пароля" id="password_confirmationf" name="web_user[password_confirmation]" onfocus="this.value='';this.type='password';" onblur="if(this.value==''){ this.type='text';this.value='Подтверждение пароля';}">
+          </fieldset>
+
+          <a id="register" href="javascript:void(0)" onclick="$(this).closest('form').submit();">Регистрация</a>
+        </form>
+      </div>
+    </div>
+    <div data-role="page" id="change_personal_data" data-theme="b">
+      <div data-role="content" class="content"> 
+        <form action="" id="user_edit" method="POST">
+          <div class="line">
+            <div class="prop">Имя</div><input type="text" data-role="none" id="u_name" placeholder="Имя" name="customer_details[name]">
+            <div class="clr"></div>
+          </div>
+          <div class="line">
+            <div class="prop">Фамилия</div><input type="text" data-role="none" id="u_lastname" placeholder="Фамилия"  name="customer_details[lastname]">
+            <div class="clr"></div>
+          </div>
+          <div class="line">
+            <div class="prop">Е-mail</div><input type="text" data-role="none" id="u_mail" placeholder="емейл"  name="web_user[email]">
+            <div class="clr"></div>
+          </div>
+          <div class="line">
+            <div class="prop">Мобильный телефон</div><input type="text" data-role="none" id="u_mob_phone" placeholder="Мобильный телефон"  name="customer_details[telephone]">
+            <div class="clr"></div>
+          </div>
+          <div class="line">
+            <div class="prop">Мобильный телефон #2</div><input type="text" data-role="none" id="u_mob_phone2" placeholder="Мобильный телефон #2"  name="customer_details[mob_phone]">
+            <div class="clr"></div>
+          </div>
+          <div class="line">
+            <div class="prop">Домашний телефон</div><input type="text" data-role="none" id="u_tel" placeholder="Домашний телефон"  name="customer_details[home_phone]">
+            <div class="clr"></div>
+          </div>
+          <div class="line">
+            <div class="prop">Город</div><input type="text" data-role="none" id="u_city" placeholder="Город" name="customer_details[city]">
+            <div class="clr"></div>
+          </div>
+          <div class="line">
+            <div class="prop">Улица</div><input type="text" data-role="none" id="u_street" placeholder="Улица" name="customer_details[street]">
+            <div class="clr"></div>
+          </div>
+          <div class="line">
+            <div class="prop">Дом</div><input type="text" data-role="none" id="u_building" placeholder="Дом" name="customer_details[building]">
+            <div class="clr"></div>
+          </div>
+          <div class="line">
+            <div class="prop">Корпус</div><input type="text" data-role="none" id="u_corpus" placeholder="Корпус" name="customer_details[corpus]">
+            <div class="clr"></div>
+          </div>
+          <div class="line">
+            <div class="prop">Номер подъезда</div><input type="text" data-role="none" id="u_porch" placeholder="Номер подъезда" name="customer_details[porch]">
+            <div class="clr"></div>
+          </div>
+          <div class="line">
+            <div class="prop">Код домофона </div><input type="text" data-role="none" id="u_code_intercom" placeholder="Код домофона " name="customer_details[code_intercom]">
+            <div class="clr"></div>
+          </div>
+          <div class="line">
+            <div class="prop">Этаж</div><input type="text" data-role="none" id="u_floor" placeholder="Этаж" name="customer_details[floor]">
+            <div class="clr"></div>
+          </div>
+          <div class="line">
+            <div class="prop">Номер квартиры</div><input type="text" data-role="none" id="u_flat" placeholder="Номер квартиры" name="customer_details[flat]">
+            <div class="clr"></div>
+          </div>
+          <div class="line">
+            <div class="prop">Логин</div><input type="text" data-role="none" id="u_login" placeholder="Логин" name="web_user[username]">
+            <div class="clr"></div>
+          </div>
+          <div class="line">
+            <div class="prop">Пароль</div><input type="password" data-role="none" id="u_pass" placeholder="Пароль" name="web_user[password]">
+            <div class="clr"></div>
+          </div>
+          <div class="line">
+            <div class="prop">Подтверждение пароля</div><input type="password" data-role="none" id="u_pass_confirm" placeholder="Подтверждение пароля" name="web_user[password_confirmation]">
+            <div class="clr"></div>
+          </div>
+          <a href="javascript:void(0);" class="update" onclick="$(this).closest('form').submit();"></a>
+          <input type="submit" class="sohanit" data-role="none" value="Сохранить">
+        </form>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <!-- FOOTER -->
+    <div data-role="footer" data-tap-toggle="false" data-theme="b" class="ui-footer ui-bar-b ui-footer-fixed slideup">
+      <div>
+        <a href="#catalog_level1" class="item1"><span></span></a>
+        <a href="#search" class="item2"><span></span></a>
+        <a href="#backet" class="item3"><span></span></a>
+        <a href="#messageslist" class="item4"><span></span></a>
+        <a href="" class="item5"><span></span></a>        
+      </div>
+    </div>
+    <!-- FOOTER -->
+  </body>
+</html>
